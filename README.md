@@ -1,4 +1,4 @@
-# Pepinals
+# Shicinals
 
 A minter and protocol for inscriptions on Shibacoin. 
 
