@@ -1,36 +1,36 @@
 # Pepinals
 
-A minter and protocol for inscriptions on Pepecoin. 
+A minter and protocol for inscriptions on Shibacoin. 
 
 ## ⚠️⚠️⚠️ Important ⚠️⚠️⚠️
 
-Use this wallet for inscribing only! Avoid storing pepinals in pepecoin core.
+Use this wallet for inscribing only! Avoid storing shicinals in Shiba core.
 
-Please use a fresh paper wallet to mint to with nothing else in it until proper wallet for pepinals support comes.. 
+Please use a fresh paper wallet to mint to with nothing else in it until proper wallet for shicinals support comes.. 
 
 This wallet is not meant for storing funds or inscriptions.
 
 ## Prerequisites
 
-To use this, you'll need to setup a Pepecoin node, clone this repo and install Node.js on your computer.
+To use this, you'll need to setup a Shiba node, clone this repo and install Node.js on your computer.
 
-### Setup Pepecoin node
+### Setup Shibainu node
 
-Install Pepecoin Core from the official Pepecoin github: (https://github.com/pepecoinppc/pepecoin/releases)
+Install Shiba Coin Core from the official Shiba Coin github: (https://github.com/shibacoinppc/shibacoin)
 
 ### ⚠️⚠️⚠️ Important ⚠️⚠️⚠️
 A configuration file needs to be created before you continue with the sync.
 
 -Stop your node
 
--Create a `pepecoin.conf` file in your Pepecoin data folder.
+-Create a `shibacoin.conf` file in your Shibacoin data folder.
 
 -Copy and paste this to the created file. Set your own username/password. Save it!
 
 ```
 rpcuser=ape
 rpcpassword=zord
-rpcport=22555
+rpcport=33864
 server=1
 listen=1
 txindex=1
@@ -52,7 +52,7 @@ Please head over to (https://nodejs.org/en/download) and follow the installation
 
 ### Setup Pepinals
 
-#### Clone Pepinal minter
+#### Clone Shicinals minter
 On your Terminal, type the following commands:
 ```
 cd
@@ -61,9 +61,9 @@ git clone https://github.com/PepeEnthusiast/Pepinals.git
 #### Setup minter
 
 ```
-cd Pepinals
+cd shicinals
 npm install
-cd bitcore-lib-pepe
+cd bitcore-lib-shic
 npm install
 cd ..
 ``` 
@@ -72,10 +72,10 @@ After all dependencies are solved, you can configure the environment:
 
 #### Configure environment
 
-Create a `.env` file with your node information. Set the same username/password used in `pepecoin.conf`.
+Create a `.env` file with your node information. Set the same username/password used in `shibacoin.conf`.
 
 ```
-NODE_RPC_URL=http://127.0.0.1:22555
+NODE_RPC_URL=http://127.0.0.1:33864
 NODE_RPC_USER=ape
 NODE_RPC_PASS=zord
 TESTNET=false
@@ -95,13 +95,13 @@ Generate a new `.wallet.json` file:
 node . wallet new
 ```
 
-Retrieve your private key from `.wallet.json` and import it in Pepecoin Core, this can be done from the GUI or the following command
+Retrieve your private key from `.wallet.json` and import it in Shibacoin Core, this can be done from the GUI or the following command
 
 ```
 pepecoin-cli importprivkey <your_private_key> <optional_label> false
 ```
 
-Then send PEPE to the address displayed. Once sent, sync your wallet:
+Then send SHBI to the address displayed. Once sent, sync your wallet:
 
 ```
 node . wallet sync
@@ -122,11 +122,11 @@ node . wallet send <address> <optional amount>
 ==========
 
 
-### Minting Pepinals
+### Minting Shicinals
 
-**Note**: Please use a fresh wallet to mint to with nothing else in it until proper wallet for pepinals support comes. 
+**Note**: Please use a fresh wallet to mint to with nothing else in it until proper wallet for shicinals support comes. 
 
-**Do not mint to Pepecoin Core**
+**Do not mint to Shibacoin Core**
 
 #### Inscribe a file
 From file:
@@ -151,33 +151,31 @@ node . mint PpB1ocks3ozcti7m5a3i2wViSuFAchLm3n pepe.jpeg
 node . mint PpB1ocks3ozcti7m5a3i2wViSuFAchLm3n "text/plain;charset=utf-8" 52696262697421 
 ```
 
-#### Deploy PRC-20
+#### Deploy SHC-20
 
 ```
-node . prc-20 deploy <address> <ticker> <max token supply> <max allowed mint limit>
-```
-
-Examples: 
-
-```
-node . prc-20 deploy PpB1ocks3ozcti7m5a3i2wViSuFAchLm3n frog 1000 100
-```
-
-#### Mint PRC-20
-
-```
-node . prc-20 mint <address> <ticker> <amount>
+node . shc-20 deploy <address> <ticker> <max token supply> <max allowed mint limit>
 ```
 
 Examples: 
 
 ```
-node . prc-20 mint PpB1ocks3ozcti7m5a3i2wViSuFAchLm3n frog 100
+node . shc-20 deploy PpB1ocks3ozcti7m5a3i2wViSuFAchLm3n frog 1000 100
 ```
 
-### Viewing Pepinals
+#### Mint SHC-20
 
-**Note**: There is currently as bug preventing to preview some larger pepinals files. Wait for a fix or a pepinals indexer. 
+```
+node . shc-20 mint <address> <ticker> <amount>
+```
+
+Examples: 
+
+```
+node . shc-20 mint PpB1ocks3ozcti7m5a3i2wViSuFAchLm3n frog 100
+```
+
+### Viewing Shicinals
 
 Viewing small inscriptions seems to work. Investigating...
 
@@ -200,7 +198,7 @@ http://localhost:3000/tx/4650300f65470c359c070ae6b88ab7945adad68458c33285968ce0b
 
 #### Protocol
 
-The pepinals protocol allows any size data to be inscribed onto subwoofers.
+The shicinals protocol allows any size data to be inscribed onto subwoofers.
 
 An inscription is defined as a series of push datas:
 
@@ -212,7 +210,7 @@ OP_0
 "Ribbit!"
 ```
 
-For pepinals, we introduce a couple extensions. First, content may spread across multiple parts:
+For shicinals, we introduce a couple extensions. First, content may spread across multiple parts:
 
 ```
 "ord"
@@ -258,12 +256,12 @@ This allows indexers to know how much data remains.
 
 #### I'm getting ECONNREFUSED errors when minting
 
-There's a problem with the node connection. Your `pepecoin.conf` file should look something like:
+There's a problem with the node connection. Your `shibacoin.conf` file should look something like:
 
 ```
 rpcuser=ape
 rpcpassword=zord
-rpcport=22555
+rpcport=33864
 server=1
 listen=1
 txindex=1
@@ -275,7 +273,7 @@ Make sure `port` is not set to the same number as `rpcport`. Also make sure `rpc
 Your `.env file` should look like:
 
 ```
-NODE_RPC_URL=http://127.0.0.1:22555
+NODE_RPC_URL=http://127.0.0.1:33864
 NODE_RPC_USER=ape
 NODE_RPC_PASS=zord
 TESTNET=false
@@ -283,6 +281,6 @@ TESTNET=false
 
 #### Other issues
 
-Try restarting your Pepecoin node.
+Try restarting your Shibacoin node.
 
 If still stuck, ask ChatGPT or search online for other solutions.
