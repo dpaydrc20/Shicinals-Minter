@@ -56,7 +56,7 @@ Please head over to (https://nodejs.org/en/download) and follow the installation
 On your Terminal, type the following commands:
 ```
 cd
-git clone https://github.com/PepeEnthusiast/Pepinals.git
+git clone (https://github.com/dpaydrc20/Shicinals-Minter.git)
 ```
 #### Setup minter
 
