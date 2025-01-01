@@ -4856,16 +4856,14 @@ function addNetwork(data) {
 addNetwork({
   name: 'livenet',
   alias: 'mainnet',
-  pubkeyhash: 0x38,
-  privatekey: 0x9e,
-  scripthash: 0x16,
-  xpubkey: 0x02facafd,
-  xprivkey: 0x02fac398,
-  networkMagic: 0xc0a0f0e0,
-  port: 33874,
-  dnsSeeds: [
-    'seeds.pepecoin.org',
-  ]
+  pubkeyhash: 0x3f, // PUBKEY_ADDRESS for livenet
+  privatekey: 0x9e, // SECRET_KEY for livenet
+  scripthash: 0x16, // SCRIPT_ADDRESS for livenet
+  xpubkey: 0x02fadafe, // EXT_PUBLIC_KEY for livenet
+  xprivkey: 0x02fac495, // EXT_SECRET_KEY for livenet
+  networkMagic: 0xb0c0e0f0, // pchMessageStart for livenet
+  port: 33864, // nDefaultPort for livenet
+  dnsSeeds: ['seeds.shibainucoin.net'], // DNS seeds for livenet
 });
 
 /**
@@ -4874,14 +4872,18 @@ addNetwork({
  */
 var livenet = get('livenet');
 
+// Testnet configuration for Shibacoin
 addNetwork({
   name: 'testnet',
   alias: 'test',
-  pubkeyhash: 0x71,
-  privatekey: 0xf1,
-  scripthash: 0xc4,
-  xpubkey: 0x043587cf,
-  xprivkey: 0x04358394
+  pubkeyhash: 0x71, // PUBKEY_ADDRESS for testnet
+  privatekey: 0xf1, // SECRET_KEY for testnet
+  scripthash: 0xc4, // SCRIPT_ADDRESS for testnet
+  xpubkey: 0x043588cb, // EXT_PUBLIC_KEY for testnet
+  xprivkey: 0x04358195, // EXT_SECRET_KEY for testnet
+  networkMagic: 0xfac3dacd, // pchMessageStart for testnet
+  port: 44864, // nDefaultPort for testnet
+  dnsSeeds: ['seeds-testnet.shibainucoin.net'], // DNS seeds for testnet
 });
 
 /**
@@ -4890,15 +4892,18 @@ addNetwork({
  */
 var testnet = get('testnet');
 
-
+// Regtest configuration for Shibacoin
 addNetwork({
   name: 'regtest',
-  alias: 'dev',
-  pubkeyhash: 0x6f,
-  privatekey: 0xef,
-  scripthash: 0xc4,
-  xpubkey: 0x043587cf,
-  xprivkey: 0x04358394,
+  alias: 'regtest',
+  pubkeyhash: 0x6f, // PUBKEY_ADDRESS for regtest
+  privatekey: 0xef, // SECRET_KEY for regtest
+  scripthash: 0xc4, // SCRIPT_ADDRESS for regtest
+  xpubkey: 0x043584cd, // EXT_PUBLIC_KEY for regtest
+  xprivkey: 0x04358297, // EXT_SECRET_KEY for regtest
+  networkMagic: 0xfcbdb3dc, // pchMessageStart for regtest
+  port: 18444, // nDefaultPort for regtest
+  dnsSeeds: [], // No DNS seeds for regtest
 });
 
 var regtest = get('regtest');
@@ -4907,10 +4912,10 @@ var regtest = get('regtest');
 // Add configurable values for testnet/regtest
 
 var TESTNET = {
-  PORT: 44874,
+  PORT: 44864,
   NETWORK_MAGIC: BufferUtil.integerAsBuffer(0xfec1dbcc),
   DNS_SEEDS: [
-    'seeds-testnet.pepecoin.org'
+    ''
   ]
 };
 
@@ -62336,9 +62341,9 @@ function config (name) {
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],258:[function(require,module,exports){
 module.exports={
-  "name": "bitcore-lib-doge",
+  "name": "bitcore-lib-shic",
   "version": "8.25.10",
-  "description": "A pure and powerful JavaScript Pepecoin library.",
+  "description": "A pure and powerful JavaScript Shibainucoin library.",
   "author": "BitPay <dev@bitpay.com>",
   "main": "index.js",
   "scripts": {
@@ -62349,7 +62354,7 @@ module.exports={
     "pub": "npm run build && npm publish"
   },
   "keywords": [
-    "pepecoin",
+    "shibainucoin",
     "bitcoin",
     "transaction",
     "address",
